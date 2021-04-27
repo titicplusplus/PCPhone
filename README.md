@@ -56,3 +56,6 @@ Example of "menu.json":
 
 
 To change of menu, you can put your fingers on the screen the rightigts to the opposite side.
+
+
+For the moment, there is no graphical interface for the configuration.
