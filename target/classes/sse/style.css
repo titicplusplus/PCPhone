@@ -1,0 +1,24 @@
+body
+{
+	background: no-repeat url("fond.jpg");
+
+}
+
+.send
+{
+	color: blue;
+
+    border-radius: 10px;
+
+	padding-top: auto;
+}
+
+.button_section
+{
+	display: flex;
+	flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+
+	text-align: center;
+}

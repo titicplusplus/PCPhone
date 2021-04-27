@@ -1,0 +1,64 @@
+.fond
+{
+	position: fixed;
+	left: 0px;
+	top: 0px;	
+
+	background: no-repeat url("/file/fond.jpg");
+	background-size: cover;
+
+	width: 100px;
+	height: 100px;
+
+	z-index: 1;
+
+
+}
+
+/* HOME */
+
+#button_s
+{
+}
+
+#full
+{
+	position: absolute;
+	z-index: 2;
+
+	width: 50px;
+	height: 50px;
+
+}
+
+#full img
+{
+	width: 50px;
+	height: 50px;
+}
+
+
+.send
+{
+    	border-radius: 10px;
+   	border: 15px solid;
+	font-size: 0px;
+	padding-top: auto;
+}
+
+/* BUTTON */
+
+.button_section
+{
+	position: relative;
+	z-index: 2;
+
+	display: flex;
+	flex-wrap: wrap;
+    	justify-content: center;
+    	align-items: center;
+
+	text-align: center;
+}
+
+/* PAGE ADMIN */

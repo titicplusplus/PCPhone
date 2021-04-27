@@ -1,0 +1,58 @@
+{
+	"type" : "button",
+	"number" : 8,
+
+	"button0": [
+			"Printer",
+			"PCP_commande",
+			"key ctrl+p",
+			"/file/imprimante.png"
+	],
+	"button1": [
+			"Screen Capture",
+			"PCP_commande",
+			"key super+F11",
+			"/file/cam.png"
+		],
+	"button2": [
+			"MStream",
+			"PCP_open",
+			"http://192.168.1.68:3000",
+			"/file/ms.png"
+	],
+
+	"button3": [
+			"Navigateur Internet",
+			"PCP_open_soft",
+			"firefox",
+			"/file/nav.png"
+	],
+
+
+	"button4": [
+			"disk",
+			"PCP_open",
+			"/",
+			"/file/doc2.png"
+	],
+	"button5": [
+			"Documents",
+			"PCP_open",
+			"/home/$USER/Documents/",
+			"/file/dossier.png"
+	],
+	"button6": [
+			"Home",
+			"PCP_open",
+			"/home/$USER/",
+			"/file/img.png"
+	],
+
+	"button7": [
+			"Youtube",
+			"PCP_open",
+			"https://youtube.com/",
+			"/file/yt.png"
+	]
+}
+
