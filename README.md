@@ -1,7 +1,7 @@
 # PCPhone
 Control your pc with your phone (or other devices with a navigator).
 
-![alt text](https://github.com/titicplusplus/PCPhone/blob/main/screen/screen1.png?raw=true)
+![alt text](https://github.com/titicplusplus/PCPhone/blob/main/screen/screen2.png?raw=true)
 
 
 # Installation
