@@ -56,6 +56,6 @@ Example of "menu.json":
 
 
 To change of menu, you can put your fingers on the screen the rightigts to the opposite side (swap).
-To apply your changes, you need to recompile the project ( ```mvn compile &&  mvn exec:java -Dexec.mainClass="WebPCPhone.Hello" ``` ).
+To apply your changes, you need to recompile the project ( ```mvn compile ``` and  ``` mvn exec:java -Dexec.mainClass="WebPCPhone.Hello" ``` ).
 
 For the moment, there is no graphical interface for the configuration.
