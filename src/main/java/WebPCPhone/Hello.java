@@ -38,8 +38,6 @@ import org.apache.commons.io.IOUtils;
 
 public class Hello {
 
-	private ArrayList<JSONObject > objson = new ArrayList<JSONObject>();
-	private ArrayList<ArrayList<JSONArray> > LesBoutons = new ArrayList<ArrayList<JSONArray >>();
 
 	public String openJSONFile(String chemin_file)  throws IOException
 	{
@@ -48,6 +46,7 @@ public class Hello {
 			System.out.println(chemin_file);
 			InputStream is = getClass().getResourceAsStream(chemin_file);
 			String result = IOUtils.toString(is, StandardCharsets.UTF_8);
+
 			return result;
 
 
@@ -61,10 +60,6 @@ public class Hello {
 		return "";
 	}
 
-	public ArrayList<ArrayList<JSONArray>> JSON()
-	{
-		return LesBoutons;
-	}
 
 	public String InputStreamToString(InputStream is)  throws IOException
 	{
@@ -105,35 +100,6 @@ public class Hello {
 	public Hello() throws IOException
 	{
 
-		JSONObject menu = new JSONObject(openJSONFile("/file/menu.json"));
-		
-		for (int i = 0; i < menu.getInt("nombre_menu"); i++)
-		{
-		
-			try
-			{
-				objson.add( new JSONObject(openJSONFile("/file/menu" + (i+1) + ".json")));
-			}
-			catch (Exception e)
-			{
-				System.out.println("mais non mais ui");
-				e.printStackTrace();
-				break;
-			}
-		}
-
-		int nmbr = objson.get(0).getInt("number");
-		
-		for (int b = 0;b < objson.size(); b++)
-		{
-			ArrayList<JSONArray> TamList = new ArrayList<JSONArray>();
-			for (int a = 0;a <nmbr;a++)
-			{
-				TamList.add( objson.get(b).getJSONArray("button" + a) );
-			}
-
-			LesBoutons.add(TamList);
-		}
 	}
 
 	public static void main(String[] args) throws Exception
@@ -144,7 +110,7 @@ public class Hello {
 
 		App app = Flak.createHttpApp(8080);
 
-		app.scan(new WebSite(ui.JSON()));
+		app.scan(new WebSite());
 		app.start();
 	}
 }

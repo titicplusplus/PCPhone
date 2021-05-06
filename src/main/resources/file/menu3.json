@@ -3,10 +3,10 @@
 	"number" : 8,
 
 	"button0": [
-			"Imprimer",
-			"PCP_commande",
-			"key ctrl+p",
-			"/file/imprimante.png"
+			"Vim",
+			"PCP_script",
+			"vim",
+			"/file/vim.png"
 	],
 	"button1": [
 			"Capture d'Ecran",
@@ -22,10 +22,10 @@
 	],
 
 	"button3": [
-			"Navigateur Internet",
-			"PCP_open_soft",
-			"chromium-browser",
-			"/file/chr.png"
+			"Current folder",
+			"PCP_script",
+			"xdotool type \"nautilus $PWD\" && xdotool key Return",
+			"/file/nauto.png"
 	],
 
 
@@ -36,23 +36,23 @@
 			"/file/doc2.png"
 	],
 	"button5": [
-			"Les Documents",
+			"PCPhone dossier",
 			"PCP_open",
-			"/mnt/704E048C4E044D72/LesDocuments/",
+			"/mnt/704E048C4E044D72/Programmation/PCPhoneDev/",
 			"/file/dossier.png"
 	],
 	"button6": [
-			"Les Images",
+			"PCPhone github",
 			"PCP_open",
-			"/mnt/704E048C4E044D72/LesImages/",
-			"/file/image.png"
+			"https://github.com/titicplusplus/PCPhone",
+			"/file/git.png"
 	],
 
 	"button7": [
-			"Youtube",
+			"Programmation",
 			"PCP_open",
-			"https://youtube.com/",
-			"/file/yt.png"
+			"/mnt/704E048C4E044D72/Programmation/",
+			"/file/prog.jpg"
 	]
 }
 

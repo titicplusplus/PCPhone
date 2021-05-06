@@ -7,13 +7,226 @@ noSleep.enable();
 var positionX = -1;
 var positionY = -1;
 
+PositionSlideX = 0;
+PositionSlideY = 0;
+type = "button";
+
+cha = "";
+
 window.onresize = function()
 {
-	taille();
+	resize();
+}
+
+/*
+window.addEventListener("keydown", function(event) {
+	if (type == "keyboard")
+		entertext(event);
+} ,true);
+*/	
+
+function entertext(event)
+{
+	console.log(event);
+	/**let text = document.getElementsByClassName('buR');
+
+	finT = new Date();
+
+	if (finT.getTime() - debT.getTime() > 200)
+	{
+		let cha2 = "";
+		if (cha.length > text[0].value.length)
+		{
+			cha2 = "BackSpace";
+			cha = text[0].value;	
+		}
+		else
+		{
+			cha = text[0].value;
+			console.log(cha);
+			cha2 = cha[cha.length - 1];
+			if (cha2 == " ")
+				cha2 = "KP_Space";
+		}
+		console.log(cha2 + " valeursend");
+
+		const Http = new XMLHttpRequest();
+		const url='/text/' + cha2;
+		Http.open("GET", url);
+		Http.send();
+
+		Http.onreadystatechange = (e) => {
+		  console.log(Http.responseText)
+		}
+		debT = new Date();
+	}
+	**/
+
+	if (event.key == "Unidentified")
+	{
+		cha = text[0].value;
+		text[0].value = "";
+
+		if (cha == " ")
+			cha = "KP_Space";
+	}
+	else {
+		cha = event.key;
+	}
+	
+	const Http = new XMLHttpRequest();
+	const url='/text/' + cha;
+	Http.open("GET", url);
+	Http.send();
+
+	Http.onreadystatechange = (e) => {
+	  console.log(Http.responseText)
+	}
 }
 
 
-function taille()
+function taille_keyboard()
+{
+
+	/** FOND **/
+	fond = document.getElementsByClassName('fond');
+	fond[0].style.height = window.innerHeight.toString() + "px";
+
+	fond[0].style.width = window.innerWidth.toString() + "px";
+
+	/** FULLSCREEN **/
+
+	fullscreen = document.getElementById("full");
+	fullscreen.style.top = (window.innerHeight - 50).toString() + "px";
+	fullscreen.style.left = (window.innerWidth - 50).toString() + "px";
+
+	/** Tableau **/
+
+
+	valeur = 0;
+	
+	let tailleX = window.innerWidth  * 0.95 ;
+	let tailleY = window.innerHeight  * 0.95;
+	
+	buR = document.getElementsByClassName('buR');
+
+	console.log("================================");
+
+	for (let i = 0; i < buR.length; i++) {
+
+		buR[i].style.marginBottom = "20px";
+		buR[i].style.width = "150px";
+		if (i > 0)
+		{
+			buR[i].style.height = buR[i].style.width;
+		}
+	}
+}
+
+function color()
+{
+	let maj_button = arguments[0];
+	
+	if (maj_button.style.backgroundColor == "black" || maj_button.style.backgroundColor == "" )
+		maj_button.style.backgroundColor = "red";
+	else
+		maj_button.style.backgroundColor = "black";
+}
+
+function key_press()
+{
+	let key = arguments[0];
+	console.log(key + " " + typeof(key));
+
+	if (key == "MAJ")
+	{
+		console.log("ui");
+		let maj = document.getElementsByClassName("maj");
+		let maj2 = document.getElementsByClassName("normal");
+		let swap;
+		
+		let maj_button = document.getElementById("MAJ");
+
+		if (maj2[0].style.display == "none")
+		{
+			swap = maj;
+			maj = maj2;
+			maj2 = swap;
+
+			maj_button.style.backgroundColor = "black";
+		}
+		else
+		{
+			maj_button.style.backgroundColor = "red";
+		}
+		
+
+		for (let i = 0; i < maj.length; i++)
+		{
+			maj2[i].style.display = "none";
+			maj[i].style.display = "block";
+		}
+	}
+	else if (key == "CTRL")
+	{
+		let maj_button = document.getElementById("CTRL");
+		color(maj_button);
+	}
+	else if (key == "ALT")
+	{
+		let maj_button = document.getElementById("ALT");
+		color(maj_button);
+	}
+	else if (key == "ALT GR")
+	{
+		let maj_button = document.getElementById("ALT GR");
+		color(maj_button);
+	}
+	else if (key == "VERNUM")
+	{
+		let maj_button = document.getElementById("VERNUM");
+		color(maj_button);
+	}
+	else
+	{
+		console.log(key);
+		let liste = ["MAJ","CTRL", "ALT GR","ALT"];
+		
+		for (let i = 0; i < liste.length; i++)
+		{
+			console.log(liste[i]);
+			let but = document.getElementById(liste[i]);
+			but.style.backgroundColor = "black";
+		}
+
+		let vernum = document.getElementById("VERNUM");
+		
+		let maj = document.getElementsByClassName("maj");
+		let maj2 = document.getElementsByClassName("normal");
+
+		if (vernum.style.backgroundColor == "black" || vernum.style.backgroundColor == "" )
+		{
+			console.log("mais ui c sur");
+			for (let i = 0; i < maj.length; i++)
+			{
+				maj[i].style.backgroundColor = "none";
+				maj2[i].style.backgroundColor = "block";
+			}
+		}
+		else
+		{
+			console.log("mais non");
+			for (let i = 0; i < maj.length; i++)
+			{
+				maj2[i].style.backgroundColor = "none";
+				maj[i].style.backgroundColor = "block";
+			}
+		}
+
+	}
+}
+
+function taille_button()
 {
 	/** FOND **/
 	fond = document.getElementsByClassName('fond');
@@ -128,7 +341,7 @@ function toggleFullscreen(elem) {
 	}
 	}
 
-	taille()
+	resize()
 }
 
 
@@ -179,13 +392,11 @@ function finch()
 		{
 			if (x - positionX > 0)
 			{
-				console.log("gauche");
-				sendResquetJSON(1);
+				sendResquetJSON( PositionSlideX-1, PositionSlideY);
 			}
 			else
 			{
-				console.log("droite");
-				sendResquetJSON(2);
+				sendResquetJSON( PositionSlideX+1, PositionSlideY);
 
 			}
 		}
@@ -193,13 +404,11 @@ function finch()
 		{
 			if (y - positionY > 0)
 			{
-				console.log("haut");
-				sendResquetJSON(3);
+				sendResquetJSON( PositionSlideX, PositionSlideY+1);
 			}
 			else
 			{
-				console.log("bas");
-				sendResquetJSON(4);
+				sendResquetJSON( PositionSlideX, PositionSlideY-1);
 			}
 		}
 	}
@@ -221,7 +430,7 @@ function sendResquetMenu()
 function sendResquet()
 {
 	const Http = new XMLHttpRequest();
-	const url='/commande/' + arguments[0].toString() + "_" + LesButtons[0].textContent + "/";
+	const url='/commande/' + arguments[0].toString() + "_" + PositionSlideX + "_" + PositionSlideY + "/";
 	Http.open("GET", url);
 	Http.send();
 
@@ -233,8 +442,11 @@ function sendResquet()
 
 function sendResquetJSON()
 {
+	NewPosX = arguments[0];
+	NewPosY = arguments[1];
+
+	const url='/JSON/' + NewPosX + "_" + NewPosY + "/";
 	
-	const url='/JSON/' + arguments[0].toString() + "_" + LesButtons[0].textContent + "/"; 
 	var request = new XMLHttpRequest();
 	request.open('GET', url, false);
 
@@ -249,58 +461,41 @@ function sendResquetJSON()
 	{
 		console.log("merde");
 	}
-	console.log(strR);
 
-	var valeur = [""];
+	if (strR != "nochange") {
+
 	
-	let valeurTAB = 0;
+		let id = document.getElementById("slide");
+		let id2 = document.getElementById("full");
 
-	for (let i = 0; i < strR.length-1; i++)
-	{
-		if (i+1 != strR.length && strR[i] == "\n")
-		{
-			valeurTAB++;
-			valeur.push("");
-		}
-		else
-		{
-			valeur[valeurTAB] += strR[i];
-		}
+		let all = document.getElementById("all");
+		all.removeChild(id);
+
+		let array = strR.split(/\r?\n/);
+
+		type = array[0];
+		x = array[1];
+		y = array[2];
+
+		template = document.createElement("template");
+		template.innerHTML = array[3];
+		//all.appendChild(template.content.firstChild);
+		all.insertBefore(template.content.firstChild, id2);
+		resize();
+
+		PositionSlideX = NewPosX;
+		PositionSlideY = NewPosY;
 	}
-	console.log(valeur.length + " taille " + valeur[valeur.length-1]);
-
-	let new_button = document.createElement("button");
-	let id_all_b = document.getElementById("button_s");
-
-
-	while (LesButtons.length < valeur.length - 1)
-	{
-		new_button.className = "send";
-		new_button.onclick = function(){sendResquet(LesButtons.length)};
-		id_all_b.appendChild(new_button);
-
-		LesButtons = document.getElementsByClassName('send'); 
-	}
-
-	while (LesButtons.length > valeur.length - 1)
-	{
-		id_all_b.removeChild(LesButtons[LesButtons.length - 1]);
-		
-		LesButtons = document.getElementsByClassName('send'); 
-	}
-
-	LesButtons[0].innerText = valeur[0];
-
-	for (let i = 1; i < valeur.length; i++)
-	{
-		LesButtons[i - 1].style.backgroundImage = "url(\"" + valeur[i] + "\")";
-		LesButtons[i - 1].style.backgroundRepeat = "no-repeat";
-		LesButtons[i - 1].style.backgroundSize = "contain";
-		LesButtons[i - 1].style.backgroundPosition = "center";
-	}
-
-	taille();
 }
 
-taille();
+function resize()
+{
+	if (type == "button")
+		taille_button();
+	else if (type == "keyboard")
+		taille_keyboard();
+}
+
+
+resize();
 

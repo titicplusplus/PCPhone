@@ -1,3 +1,6 @@
+body
+{ overflow: hidden; }
+
 .fond
 {
 	position: fixed;
@@ -60,5 +63,61 @@
 
 	text-align: center;
 }
+
+/* Keyboard */
+
+table
+{
+	width: all;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	z-index: 1;
+}
+
+tbody
+{
+}
+
+tr
+{
+	display: flex;
+	justify-content: center;
+}
+
+td {
+	padding: 0px;
+	margin: 1px;
+	font-size: 15px;
+}
+
+td button
+{
+	font-size: 15px;
+	border-radius: 10px;
+	border: 1px ridge #444;
+	background-color: black;
+
+}
+
+.key
+{
+	font-size: 25px;
+	color: white;
+}
+
+#key {
+	position: relative;
+	z-index: 2;
+	display: flex;
+	width: all;
+}
+
+
+.part {
+	display: flex;
+	flex-direction: column;
+}
+
 
 /* PAGE ADMIN */

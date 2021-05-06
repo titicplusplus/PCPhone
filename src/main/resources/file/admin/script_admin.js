@@ -1,127 +1,140 @@
-function taille()
-{
-	/** FOND **/
-	fond = document.getElementsByClassName('fond');
-	let taille = window.innerHeight * 0.2;
-
-
-	fond[0].style.height = (window.innerHeight * 0.21).toString() + "px";
-
-	fond[0].style.width = window.innerWidth.toString() + "px";
-
-	/** SCREEN SIZE **/
-
-	button = document.getElementsByClassName('button_section');
-
-
-	button[0].style.height = taille.toString() + "px";
-	
-	
-	/** LES BUTONS **/
-
-
-	LesButtons = document.getElementsByClassName('send');
-
-	var Proportion = taille/window.innerWidth;
-	var NewProportion = 20.0;
-	var OldProportion = 1000.0;
-
-	var supposition;
-	
-
-	for (var i = 1; i < LesButtons.length; i++)
-	{
-		if (i == 1)
-		{
-			supposition = 1;
-			NewProportion = Math.abs( Proportion - (i / (LesButtons.length/i))) ;
-			console.log(OldProportion + " " + NewProportion + " " + Proportion + " " + i);
-
-		}
-		else if ( Number.isInteger(LesButtons.length / i) )
-		{
-			OldProportion = NewProportion;
-
-			NewProportion = Math.abs( Proportion - (i / (LesButtons.length/i))) ;
-			console.log(OldProportion + " " + NewProportion + " " + Proportion + " " + i);
-
-
-			if (OldProportion < NewProportion)
-			{
-				break;
-			}
-
-			supposition = i;
-
-		}
-	}
-
-
-	let tailleXY = Math.floor(taille / supposition - 10);
-	
-	if (tailleXY*(LesButtons.length / supposition) > window.innerWidth*0.98)
-	{
-		tailleXY = Math.floor(window.innerWidth / (LesButtons.length / supposition) - 20);
-	}
-
-
-	let tailleEsp = (Math.floor( window.innerWidth / Math.ceil(LesButtons.length / supposition) - 10) - tailleXY) / 2;
-
-	for (let a = 0; a < LesButtons.length; a++)
-	{
-		LesButtons[a].style.height = tailleXY.toString() + "px";
-
-		LesButtons[a].style.width = tailleXY.toString() + "px";
-
-		LesButtons[a].style.marginLeft = tailleEsp.toString() + "px";
-		LesButtons[a].style.marginRight = tailleEsp.toString() + "px";
-	}
-}
-
-function sendResquetS()
-{
-	if (arguments[0].toString() == 0)
-	{
-  		document.getElementById("p1").innerHTML = " element's path ";
-  		let elementMOD  = document.getElementById("modification");
-  		elementMOD.style.display = "flex";
-  		elementMOD.style.justifyContent = "center";
-
-  		let elementAPP  = document.getElementById("Apply_button");
-  		elementAPP.style.display = "flex";
-  		elementAPP.style.justifyContent = "center";
-
-	}
-	else if (arguments[0].toString() == 1)
-	{
-  		document.getElementById("p1").innerHTML = " executable's path ";
-  		let elementMOD  = document.getElementById("modification");
-  		elementMOD.style.display = "flex";
-  		elementMOD.style.justifyContent = "center";
-
-  		let elementAPP  = document.getElementById("Apply_button");
-  		elementAPP.style.display = "flex";
-  		elementAPP.style.justifyContent = "center";
-
-	}
-	else if (arguments[0].toString() == 3)
-	{
-  		document.getElementById("p1").innerHTML = " command line ";
-  		let elementMOD  = document.getElementById("modification");
-  		elementMOD.style.display = "flex";
-  		elementMOD.style.justifyContent = "center";
-
-  		let elementAPP  = document.getElementById("Apply_button");
-  		elementAPP.style.display = "flex";
-  		elementAPP.style.justifyContent = "center";
-
-	}
-}
-
 function Apply()
 {
 
 }
 
+function sendResquetJSON()
+{
+	
+	const url='/JSON_VERSION/' + arguments[0].toString(); 
+	var request = new XMLHttpRequest();
+	request.open('GET', url, false);
 
-taille();
+	request.send();
+
+	var strR = "mais ui";
+	
+	if (request.status === 200) {
+	  	strR = request.response;
+	}
+	else
+	{
+		console.log("merde");
+	}
+	console.log(strR);
+	return strR;
+
+}
+
+function configuration()
+{
+	if (window.location.pathname == "/admin")
+	{
+		fond = document.getElementById('fond');
+		fond.style.height = window.innerHeight.toString() + "px";
+
+		fond.style.width = window.innerWidth.toString() + "px";
+		console.log("base config");
+		let obJ = JSON.parse(sendResquetJSON(0));
+
+		let x_moins = obJ["slide1"][0], x_plus = obJ["slide1"][0], y_moins = obJ["slide1"][1], y_plus = obJ["slide1"][1];
+		for (let i = 0; i < obJ.nombre_menu; i++)
+		{
+			console.log("i");
+			if (x_moins > obJ["slide" + i.toString()][0])
+			{
+				x_moins = obJ["slide" + i.toString()][0];
+			} 
+			if (x_plus < obJ["slide" + i.toString()][0]) {
+				console.log(i);
+				x_plus = obJ["slide" + i.toString()][0];
+			}
+
+			if (y_moins > obJ["slide" + i.toString()][1])
+			{
+				y_moins = obJ["slide" + i.toString()][1];
+			} 
+			if (y_plus < obJ["slide" + i.toString()][1]) {
+				y_plus = obJ["slide" + i.toString()][1];
+			}
+		}
+		let tab2d = new Array(Math.abs(x_plus - x_moins + 3));
+		console.log("taille x:" + Math.abs(x_plus - x_moins + 3) + "avec" + x_plus + " " + x_moins + " " + y_plus + " " + y_moins);
+		for (let i = 0; i < tab2d.length; i++)
+		{
+			tab2d[i] = new Array(Math.abs(y_plus - y_moins + 3));
+		}
+
+		for (let i = 0; i < obJ.nombre_menu; i++)
+		{
+			let PosX = Math.abs(obJ["slide" + i.toString()][0] - x_moins + 1);
+			let PosY = Math.abs(obJ["slide" + i.toString()][1] - y_moins +  1);
+			tab2d[PosX][PosY] =  obJ["slide" + i.toString()][3].toString();
+
+			if (tab2d[PosX+1][PosY] == undefined)
+				tab2d[PosX+1][PosY] = "New";
+			if (tab2d[PosX-1][PosY] == undefined)
+				tab2d[PosX-1][PosY] = "New";
+			if (tab2d[PosX][PosY-1] == undefined)
+				tab2d[PosX][PosY-1] = "New";
+			if (tab2d[PosX][PosY+1] == undefined)
+				tab2d[PosX][PosY+1] = "New";
+		}
+		tableau = document.getElementById("table_base");
+
+		tailleX = tab2d.length;
+		tailleY = tab2d[0].length;
+
+		for (let i = 0; i < tab2d[0].length; i++)
+		{
+			 let row = document.createElement("tr");
+
+   			 for (let j = 0; j < tab2d.length; j++) {
+				console.log("x:"+ j + " y:" + i + " " + tab2d[j][i]);
+				let cell = document.createElement("td");
+				let button = document.createElement("button");
+				if (tab2d[j][i] != undefined)
+				{
+					let cellText= document.createTextNode(tab2d[j][i]);
+					button.onclick = function(){go(j,i)};
+					button.appendChild(cellText);					
+					button.style.width = (window.innerWidth / tab2d.length * 0.95) + "px";
+					button.style.height = (window.innerHeight / tab2d[0].length * 0.95) + "px";
+					button.className = "button_send";
+					cell.appendChild(button);
+				}
+      				row.appendChild(cell);
+   			 }
+
+			tableau.appendChild(row);
+		}
+		
+	}
+}
+
+function go()
+{
+	console.log(arguments[0] + " " + arguments[1]);
+}
+
+
+function taille()
+{
+	fond = document.getElementById('fond');
+	fond.style.height = window.innerHeight.toString() + "px";
+
+	fond.style.width = window.innerWidth.toString() + "px";
+
+	all_button = document.getElementsByClassName('button_send');	
+	
+	for (var i = 0; i < all_button.length; i++)
+	{
+		all_button[i].style.width = (window.innerWidth / tailleX * 0.95) + "px";
+		all_button[i].style.height = (window.innerHeight / tailleY * 0.95) + "px";
+	}
+
+		
+}
+window.onresize = function(){ taille();}
+
+configuration();

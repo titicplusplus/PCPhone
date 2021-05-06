@@ -1,4 +1,4 @@
-.fond
+#fond
 {
 	position: fixed;
 	left: 0px;
@@ -10,7 +10,7 @@
 	width: 100px;
 	height: 100px;
 
-	z-index: 1;
+	z-index: 0;
 
 
 }
@@ -129,4 +129,33 @@
 #Apply_button button
 {
 	width: 300px;
+}
+
+table
+{
+	position: relative;
+	z-index: 2;
+	width: all;
+	text-align: center;
+}
+
+tbody
+{
+	width: all;
+}
+
+tr
+{
+	width: all;
+}
+
+.button_send
+{
+    border-radius: 10px;
+}
+
+
+td {
+    text-align: center;
+    width: all;
 }
