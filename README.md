@@ -6,7 +6,7 @@ Control your pc with your phone (or other devices with a navigator).
 
 # Installation
 
-You need Java and Maven.
+You need Java, Maven and xdotool.
 
 ```
 git clone https://github.com/titicplusplus/PCPhone.git
@@ -18,7 +18,7 @@ After the compilation, you can go on your navigator and write http://localhost:8
 
 # Settings
 
-To change the button's setting, you must change the "menu1.json".
+To change the button's setting, you must change the "menu1.json" in the folder "src/main/resources/file/".
 
 ```
 	"button0": [
@@ -55,7 +55,7 @@ Example of "menu.json":
 ```
 
 
-To change of menu, you can put your fingers on the screen the rightigts to the opposite side.
-
+To change of menu, you can put your fingers on the screen the rightigts to the opposite side (swap).
+To apply your changes, you need to recompile the project ( ```mvn compile &&  mvn exec:java -Dexec.mainClass="WebPCPhone.Hello" ``` ).
 
 For the moment, there is no graphical interface for the configuration.
