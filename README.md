@@ -1,5 +1,5 @@
 # PCPhone
-Control your pc with your phone (or other devices with a navigator).
+Control your pc with your phone (or other devices with a browser).
 
 ![alt text](https://github.com/titicplusplus/PCPhone/blob/main/screen/screen2.png?raw=true)
 
@@ -14,11 +14,11 @@ cd PCPhone/
 mvn compile
 mvn exec:java -Dexec.mainClass="WebPCPhone.Hello"
 ```
-After the compilation, you can go on your navigator and write http://localhost:8080/
+After the compilation, you can go on your browser and write http://localhost:8080/
 
 # Settings
 
-To change the button's setting, you must change the "menu1.json" in the folder "src/main/resources/file/".
+To change the button's settings, you must change the "menu1.json" in the folder "src/main/resources/file/".
 
 ```
 	"button0": [
@@ -55,7 +55,7 @@ Example of "menu.json":
 ```
 
 
-To change of menu, you can put your fingers on the screen the rightigts to the opposite side (swap).
+To change the menu, you can put your finger on the screen and swipe to the opposite side.
 To apply your changes, you need to recompile the project ( ```mvn compile ``` and  ``` mvn exec:java -Dexec.mainClass="WebPCPhone.Hello" ``` ).
 
-For the moment, there is no graphical interface for the configuration.
+For the moment, there is no graphical interface for configuration.
