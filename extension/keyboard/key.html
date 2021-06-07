@@ -1,0 +1,23 @@
+<section class="keyboard_section" id="slide">
+	<table>
+		<tbody>
+
+			<tr class="tableau">
+			{% for i in  args0 %}
+
+			{% if i == "\n" %}
+				</tr>
+				<tr class="tableau">
+			{% else %}
+			<td> <button class="key" id="{{ i }}"  onclick="key_press(this.id)"> {{ i}} </button> </td>"
+
+			{% endif %}
+
+
+			{% endfor %}
+
+			</tr>
+
+		</tbody>
+	</table>
+</section>

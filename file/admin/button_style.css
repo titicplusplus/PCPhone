@@ -1,0 +1,120 @@
+#fond
+{
+	position: fixed;
+	left: 0px;
+	top: 0px;	
+
+	background: no-repeat url("../fond.jpg");
+	background-size: cover;
+
+	width: 100px;
+	height: 100px;
+
+	z-index: 0;
+
+
+}
+
+input {
+	border-radius: 5px;
+	margin: 0;
+}
+
+.button_section
+{
+	height: 20%;
+	display: flex;
+	justify-content: center;
+	position: relative;
+	z-index: 2;
+}
+
+.send {
+	margin: 5px;
+}
+
+#setting
+{
+	
+	display: flex;
+	justify-content: space-around;
+
+
+}
+
+.elementS
+{
+	display: flex;
+	text-align: center;
+	justify-content: center;
+}
+
+#buttonConfig {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	flex-direction: column;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.elementS p
+{
+	padding-right: 10px;
+}
+
+.elementS input
+{
+	margin-top: 10px;
+	margin-right: 20px;
+
+	height: 30px;
+}
+
+
+#elementS2
+{
+	margin-top: 30px;
+}
+
+.sendS
+{
+    border-radius: 10px;
+    margin: 1px;
+    padding: 3px;
+
+	padding-top: auto;
+}
+
+#modification
+{
+	text-align: center;
+}
+
+#modification p
+{
+	padding-right: 10px;
+}
+
+#modification input
+{
+	margin-top: 10px;
+	margin-right: 20px;
+
+	height: 30px;
+}
+
+#Apply_button
+{
+	margin-top: 30px;
+	display: none;
+	text-align: center;
+}
+
+#Apply_button button
+{
+	width: 300px;
+}
+
+

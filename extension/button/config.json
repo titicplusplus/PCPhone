@@ -1,0 +1,10 @@
+{
+	"html": "button.html",
+	"css":  "style.css",
+	"js": "script.js",
+
+	"exe_argu": "auto",
+	"exe": "ui"
+
+
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+	<head>
+	  <meta charset="utf-8">
+	  <title>PCPhone</title>
+<!-- Style -->
+<!--	<link rel="stylesheet" href="/file/style.css">-->
+	<!--  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/css/index.css">-->
+
+	</head>
+
+	<body id="all" onmousedown="start(event)" ontouchstart="startM(event)" onmouseup="fin(event)" ontouchend="finM(event)" onresize="taille()">
+
+		<div class="fond" id="le_fond"></div>
+
+			<img src="file/arrow.png" alt="arrow" class="arrow" onclick="sendResquetJSON( PositionSlideX-1, PositionSlideY)" /> 
+			<img src="file/arrow.png" alt="arrow" class="arrow" onclick="sendResquetJSON( PositionSlideX, PositionSlideY+1)" />
+			<img src="file/arrow.png" alt="arrow" class="arrow" onclick="sendResquetJSON( PositionSlideX+1, PositionSlideY)" />
+			<img src="file/arrow.png" alt="arrow" class="arrow" onclick="sendResquetJSON( PositionSlideX, PositionSlideY-1)" />
+
+
+<!--Element -->
+		<section id="full" onclick="toggleFullscreen()">
+			<img src="/file/full.png">
+		</section>
+	
+
+
+
+	  <script src="/file/script.js">	  </script>
+
+	</body>
+</html>

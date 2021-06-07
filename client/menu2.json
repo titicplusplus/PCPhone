@@ -1,0 +1,50 @@
+{
+	"type" : "button",
+	"number" : 8,
+
+
+	"args0" : [
+		"Bureau",
+		"Capture d'Ecran",
+		"MStream",
+		"Thunderbird",
+		"Photos boulot",
+		"Dossier Entreprise",
+		"Devis 2021",
+		"Facture 2021"
+	],
+
+	"args1" : [
+		"PCP_commande",
+		"PCP_commande",
+		"PCP_open",
+		"PCP_script",
+		"PCP_open",
+		"PCP_open",
+		"PCP_open",
+		"PCP_open"
+	],
+
+	"args2" : [
+		"key Super_L+d",
+		"key super+F11",
+		"http://192.168.1.68:3000",
+		"thunderbird",
+		"/mnt/704E048C4E044D72/LesImages/Photos\\ boulot/",
+		"/mnt/704E048C4E044D72/Entreprise/",
+		"/mnt/704E048C4E044D72/Entreprise/DEVIS\\ 2021/",
+		"/mnt/704E048C4E044D72/Entreprise/FACTURE\\ 2021/"
+	],
+
+	"args3" : [
+		"/file/ub.png",
+		"/file/cam.png",
+		"/file/ms.png",
+		"/file/th.png",
+		"/file/img4.png",
+		"/file/devis.png",
+		"/file/ma.png",
+		"/file/ent.png"
+	]
+}
+

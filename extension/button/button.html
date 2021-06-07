@@ -1,0 +1,12 @@
+<section class="button_section" id="slide">
+	
+	{% for i in range( number ) %}
+
+	<button type="button" class="send" onclick="sendResquet( {{ i }} )"
+		style="background-image:url( {{ at( args3, i)   }} ); background-color: transparent;
+		       background-repeat: no-repeat; background-size: contain; background-position: center;" >
+
+	</button> 
+
+	{% endfor %}
+</section>

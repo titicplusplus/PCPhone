@@ -1,0 +1,50 @@
+{
+	"type" : "button",
+	"number" : 8,
+
+
+	"args0": [
+		"Imprimer",
+		"Capture D'Ecran",
+		"MStream",
+		"Navigateur Internet",
+		"Home",
+		"Disk",
+		"Les Images",
+		"Youtube"
+	],
+
+	"args1": [
+		"PCP_commande",
+		"PCP_script",
+		"PCP_open",
+		"PCP_script",
+		"PCP_open",
+		"PCP_open",
+		"PCP_open",
+		"PCP_open"
+	],
+
+	"args2": [
+		"key ctrl+p",
+		"gnome-screenshot",
+		"https://github.com/titicplusplus/PCPhone",
+		"firefox",
+		"$HOME/",
+		"/",
+		"/mnt/704E048C4E044D72/LesImages/",
+		"https://youtube.com/"
+	],
+
+	"args3": [
+		"/file/imprimante.png",
+		"/file/cam.png",
+		"/file/git.png",
+		"/file/nav.png",
+		"/file/doc2.png",
+		"/file/dossier.png",
+		"/file/image.png",
+		"/file/yt.png"
+	]
+}
+

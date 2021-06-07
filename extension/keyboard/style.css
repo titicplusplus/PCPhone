@@ -1,0 +1,53 @@
+table
+{
+	width: all;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	z-index: 1;
+}
+
+tbody
+{
+}
+
+tr
+{
+	display: flex;
+	justify-content: center;
+}
+
+td {
+	padding: 0px;
+	font-size: 15px;
+}
+
+td button
+{
+	font-size: 15px;
+	border-radius: 10px;
+	border: 1px ridge white;
+	background-color: black;
+
+}
+
+.key
+{
+	font-size: 25px;
+	color: white;
+	padding: 0px;
+}
+
+#key {
+	position: relative;
+	z-index: 2;
+	display: flex;
+	width: all;
+}
+
+
+.part {
+	display: flex;
+	flex-direction: column;
+}
+

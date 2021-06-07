@@ -1,0 +1,58 @@
+{
+	"type" : "button",
+	"number" : 8,
+
+	"button0": [
+			"Bureau",
+			"PCP_commande",
+			"key Super_L+d",
+			"/file/ub.png"
+	],
+	"button1": [
+			"Capture d'Ecran",
+			"PCP_commande",
+			"key super+F11",
+			"/file/cam.png"
+		],
+	"button2": [
+			"MStream",
+			"PCP_open",
+			"http://192.168.1.68:3000",
+			"/file/ms.png"
+	],
+
+	"button3": [
+			"Thunderbird",
+			"PCP_open_soft",
+			"thunderbird &",
+			"/file/th.png"
+	],
+
+
+	"button6": [
+			"Devis 2021",
+			"PCP_open",
+			"/mnt/704E048C4E044D72/Entreprise/DEVIS\\ 2021/",
+			"/file/ma.png"
+	],
+	"button4": [
+			"Photos boulot",
+			"PCP_open",
+			"/mnt/704E048C4E044D72/LesImages/Photos\\ boulot/",
+			"/file/img4.png"
+	],
+	"button5": [
+			"Dossier Entreprise",
+			"PCP_open",
+			"/mnt/704E048C4E044D72/Entreprise/",
+			"/file/devis.png"
+	],
+
+	"button7": [
+			"Facture 2021",
+			"PCP_open",
+			"/mnt/704E048C4E044D72/Entreprise/FACTURE\\ 2021/",
+			"/file/ent.png"
+	]	
+}
+

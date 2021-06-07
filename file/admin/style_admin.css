@@ -1,0 +1,161 @@
+#fond
+{
+	position: fixed;
+	left: 0px;
+	top: 0px;	
+
+	background: no-repeat url("../fond.jpg");
+	background-size: cover;
+
+	width: 100px;
+	height: 100px;
+
+	z-index: 0;
+
+
+}
+
+/* HOME */
+
+#full
+{
+	position: absolute;
+	z-index: 2;
+
+	width: 50px;
+	height: 50px;
+
+}
+
+#full img
+{
+	width: 50px;
+	height: 50px;
+}
+
+
+.send
+{
+	color: blue;
+
+    border-radius: 10px;
+
+	padding-top: auto;
+}
+
+.button_section
+{
+	position: relative;
+	z-index: 2;
+
+	display: flex;
+	flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+	text-align: center;
+}
+
+/* PAGE ADMIN */
+
+#setting
+{
+	
+	display: flex;
+	justify-content: space-around;
+
+
+}
+
+.elementS
+{
+	display: flex;
+	text-align: center;
+	justify-content: center;
+}
+
+.elementS p
+{
+	padding-right: 10px;
+}
+
+.elementS input
+{
+	margin-top: 10px;
+	margin-right: 20px;
+
+	height: 30px;
+}
+
+
+#elementS2
+{
+	margin-top: 30px;
+}
+
+.sendS
+{
+    border-radius: 10px;
+    margin: 1px;
+    padding: 3px;
+
+	padding-top: auto;
+}
+
+#modification
+{
+	text-align: center;
+}
+
+#modification p
+{
+	padding-right: 10px;
+}
+
+#modification input
+{
+	margin-top: 10px;
+	margin-right: 20px;
+
+	height: 30px;
+}
+
+#Apply_button
+{
+	display: none;
+	text-align: center;
+}
+
+#Apply_button button
+{
+	width: 300px;
+}
+
+table
+{
+	position: relative;
+	z-index: 2;
+	width: all;
+	text-align: center;
+}
+
+tbody
+{
+	width: all;
+}
+
+tr
+{
+	width: all;
+}
+
+.button_send
+{
+    border-radius: 10px;
+}
+
+
+td {
+    text-align: center;
+    width: all;
+}

@@ -1,0 +1,11 @@
+{
+	"number_menu": 5,
+	"port": 8080,
+
+	"slide0" : [
+		0,
+		0,
+		0,
+		"Home_Page"
+	]
+}

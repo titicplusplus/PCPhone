@@ -1,0 +1,33 @@
+{
+	"nombre_menu": 5,
+	"slide0" : [
+		0,
+		0,
+		0,
+		"Acceuil"
+	],
+	"slide1" : [
+		-1,
+		0,
+		1,
+		"Entreprise"
+	],
+	"slide2" : [
+		1,
+		0,
+		2,
+		"Programmation"
+	],
+	"slide3": [
+		0,
+		-1,
+		3,
+		"keyboard"
+	],
+	"slide4": [
+		1,
+		-1,
+		4,
+		"TouchePad"
+	]
+}

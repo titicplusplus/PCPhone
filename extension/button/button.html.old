@@ -1,0 +1,10 @@
+<section class="button_section" id="slide">
+	{{[
+	<button type="button" class="send" onclick="sendResquet( {{{ i }}} )"
+		style="background-image:url( {{{ json(3) }}} ); background-color: transparent;
+		       background-repeat: no-repeat; background-size: contain; background-position: center;" >
+
+	</button> 
+
+	]}}
+</section>

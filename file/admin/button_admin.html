@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+	<head>
+	  <meta charset="utf-8">
+	  <title>PCPhone</title>
+
+	  <!-- <link rel="stylesheet" href="/file/admin/style_admin.css"> -->
+	  <link rel="stylesheet" href="/file/admin/button_style.css">
+
+
+	</head>
+
+	<body onresize="taille()">
+
+		<div id="fond"></div>
+
+<!-- Button -->
+
+		<section id="setting">
+			<div>
+				<div class="setting">
+					<div class="elementS">
+						<p>Button's name: </p>
+						<input type="text" id="name_b">
+
+						<p>Icone's path: </p>
+						<input type="text" id="name_i">
+
+						<p>Move</p>
+						<button id="left" onclick="move(-1)" class="sendS">Left</button>
+						<button id="right" onclick="move(1)" class="sendS">Right</button>
+					</div>
+
+				</div>
+
+				<div class="elementS" id="buttonConfig">
+					<!-- <button type="button" class="sendS" onclick="sendResquetS(0)" >Open a File/Folder/Software</button>
+					<button type="button" class="sendS" onclick="sendResquetS(1)" >executable path</button>
+					<button type="button" class="sendS" onclick="sendResquetS(2)" >keyboard/mouse execution</button>
+					<button type="button" class="sendS" onclick="sendResquetS(3)" >Commande line</button> -->
+					
+					
+				</div>
+
+				<div class="setting" id="modification" style="display: none;">
+					<p id="p1"></p>
+					
+					<input type="text" id="name2">
+
+
+				</div>
+				<div id="Apply_button">
+					<button type="button" class="sendS" onclick="Apply(1)" id="p2" >Try it</button>
+
+					<button type="button" class="sendS" onclick="Apply(2)" id="p2" >Delete it</button>
+					<button type="button" class="sendS" onclick="Apply(3)" id="p2" >Reset it</button>
+				</div>
+			</div>
+
+
+
+			<div id="elementS2">
+
+					<button type="button" class="sendS" onclick="add_b()" >Add a Button</button>
+					<button type="button" class="sendS" onclick="sendAll(3)" id="p2" >Apply</button>
+			</div>
+		</section>
+
+		<!-- <script src="/file/admin/script_admin.js">	  </script> -->
+		<script src="/file/admin/button_admin.js">	  </script>
+	</body>
+</html>
