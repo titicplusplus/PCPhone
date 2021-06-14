@@ -3,7 +3,7 @@ Control your pc with your phone (or other devices with a navigator).
 
 ![alt text](https://github.com/titicplusplus/PCPhone/blob/main/screen/screen2.png?raw=true)
 
-Discord server : [https://discord.gg/aMNZXdrXVh]https://discord.gg/PCPhone
+Discord server : https://discord.gg/aMNZXdrXVh
 # Installation
 
 You need to install xdotool.
