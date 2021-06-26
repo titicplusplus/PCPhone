@@ -1,5 +1,5 @@
 # PCPhone
-Control your pc with your phone (or other devices with a navigator).
+Control your pc with your phone (or other devices with a browser).
 
 ![alt text](https://github.com/titicplusplus/PCPhone/blob/main/screen/screen2.png?raw=true)
 
