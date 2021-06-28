@@ -1,11 +1,1 @@
-{
-	"number_menu": 1,
-	"port": 8080,
-
-	"slide0" : [
-		0,
-		0,
-		0,
-		"Home_Page"
-	]
-}
+{"image":"/mnt/704E048C4E044D72/Programmation/PCPhone2C++/file/fond.jpg","number_menu":1,"port":8080,"pos":[0,0],"slide0":[0,0,0,"Home"]}

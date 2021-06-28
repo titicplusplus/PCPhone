@@ -1,0 +1,14 @@
+.button_section
+{
+        position: relative;
+        z-index: 2;
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+
+        text-align: center;
+}
+
+

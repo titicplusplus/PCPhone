@@ -1,0 +1,14 @@
+{
+	"ext": "pcphone_key",
+	"name": "keyboard shortcut",
+
+	"arguments": {
+		"QLineEdit" : [
+			"args3",
+			"The keys"
+		]
+
+	},
+
+	"exe_linux": "exe_linux"
+}

@@ -1,0 +1,9 @@
+site_name: PCPhone Docs 
+site_url: https://example.com/
+
+nav:
+    - PCPhone: index.md
+    - Extension: work.md
+
+
+theme: readthedocs

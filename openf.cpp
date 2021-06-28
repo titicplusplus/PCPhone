@@ -12,7 +12,7 @@ std::string openf::open_file(std::string filename, json &j)
 	Environment env;
 	Template temp = env.parse_template(filename);
 
-	env.add_callback("find", 2, [](Arguments& args) {
+	/**env.add_callback("find", 2, [](Arguments& args) {
 
 		if ( args.at(0)->get<std::string>().find( args.at(1)->get<std::string>() ) == std::string::npos)
 		{
@@ -56,7 +56,7 @@ std::string openf::open_file(std::string filename, json &j)
 
 		return send.c_str();
 
-	});
+	});**/
 
 	std::string result = env.render(temp, j);	
 	return result;

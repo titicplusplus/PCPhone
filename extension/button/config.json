@@ -1,10 +1,17 @@
 {
-	"html": "button.html",
-	"css":  "style.css",
-	"js": "script.js",
+	"html": "file/button.html",
+	"css":  "file/style.css",
+	"js": "file/script.js",
 
 	"exe_argu": "auto",
-	"exe": "ui"
+	"exe_linux": "ui",
+	"exe_win": "exe_win",
+	"exe_mac": "exe_mac",
+	
+
+	"ui_linux": "ui_linux",
+	"ui_win": "ui_win",
+	"ui_mac": "ui_mac"
 
 
 }

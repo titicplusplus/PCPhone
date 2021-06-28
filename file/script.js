@@ -10,11 +10,31 @@ noSleep.enable();
 var positionX = -1;
 var positionY = -1;
 
-PositionSlideX = 0;
-PositionSlideY = 0;
+PositionSlideX = null;
+PositionSlideY = null;
 type = "button";
 
 cha = "";
+
+function default_position() {
+	const Http = new XMLHttpRequest();
+	const url='/default_pos';
+	Http.open("GET", url, false);
+	Http.send();
+
+	
+	if (Http.status === 200) {
+		const json_re = JSON.parse(Http.responseText);
+		PositionSlideX = json_re[0];
+		PositionSlideY = json_re[1];
+	}
+	else
+	{
+		PositionSlideX = 0;
+		PositionSlideY = 0;
+	}
+
+}
 
 class TouchPad {
 	constructor() {
@@ -626,6 +646,7 @@ function resize()
 }
 
 
+default_position();
 open_f();
 size_all();
 config_all();

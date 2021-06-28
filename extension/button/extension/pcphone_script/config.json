@@ -1,0 +1,15 @@
+{
+	"ext": "pcphone_script",
+	"name": "Execute script",
+
+	"arguments": {
+		"QLineEdit" :[
+			"args3",
+			"The script"
+		] 
+	},
+
+	"exe_linux" : "exe_linux",
+	"exe_mac" : "exe_mac",
+	"exe_win" : "exe_win"
+}

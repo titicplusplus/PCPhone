@@ -1,0 +1,19 @@
+{
+	"ext": "pcphone_open",
+	"name": "Open a File, a Directory, a link and etc",
+
+	"arguments": {
+		"QFileExplorer": [
+			"args3",
+			"The path:",
+			"Open",
+			""
+		]
+	},
+
+	"exe_linux": "exe_linux",
+	"exe_win": "exe_win",
+	"exe_mac": "exe_mac"
+}	
+
+

@@ -1,24 +1,10 @@
 #include "website.hpp"
+#include <icecream.hpp>
 using json = nlohmann::json;
-//namespace fs = std::filesystem;
 
-#ifndef __has_include
-  static_assert(false, "__has_include not supported");
-#else
-#  if __has_include(<experimental/filesystem>)
-#    include <experimental/filesystem>
-     namespace fs = std::experimental::filesystem;
-#  elif __has_include(<filesystem>)
-#    include <filesystem>
-     namespace fs = std::filesystem;
-#  elif __has_include(<boost/filesystem.hpp>)
-#    include <boost/filesystem.hpp>
-     namespace fs = boost::filesystem;
-#  endif
-#endif
 
-webserver::webserver()
-{
+website::website() {
+
 	/** open all of the json file **/
 
 	std::ifstream big_m("client/menu.json");
@@ -27,19 +13,24 @@ webserver::webserver()
 
 	std::cout << config_json.dump() << std::endl;
 	int size { config_json["number_menu"] }; 
+	std::cout << size << std::endl;
+	
+	file_json.resize(size);
 
 	for (int i = 0; i < size; i++)	
 	{
 		std::string name { "slide" + std::to_string(i)};
 		int v1 = config_json[name][0];
 		int v2 = config_json[name][1];
+
 		posi_json.insert( make_pair( std::to_string(v1) + "_" + std::to_string(v2), config_json[name][2]));
 
 
 		std::cout << name << " " << config_json[name][2] << std::endl;
 
 		std::ifstream ifs_n("client/menu" + std::to_string( config_json[name][2].get<int>()+1 ) + ".json");
-		file_json.push_back( json::parse(ifs_n) );
+		//file_json.push_back( json::parse(ifs_n) );
+		file_json[ config_json[name][2] ] = json::parse(ifs_n);
 		ifs_n.close();
 	}
 
@@ -57,17 +48,21 @@ webserver::webserver()
 		ext.close();
 	}
 
+	for (auto &i : file_json)
+		std::cout << i << std::endl;
+
 	for (auto &i : extension)
 		std::cout << i.first << " " << i.second << std::endl; 
 
 }
 
-void webserver::back_end( std::unordered_multimap<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char>, SimpleWeb::CaseInsensitiveHash, SimpleWeb::CaseInsensitiveEqual> query_fields)
+
+
+void website::back_end( std::unordered_multimap<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char>, SimpleWeb::CaseInsensitiveHash, SimpleWeb::CaseInsensitiveEqual> query_fields)
 {
-	/** to execute the extension's code **/
+	/** to execute the extension s code **/
 
 	int pos = find_json_str( query_fields.find("x")->second,query_fields.find("y")->second);
-	//std::string chemin { fs::absolute("client/menu" + std::to_string(pos) + ".json") };
 
 
 	std::string type { file_json[pos]["type"] };
@@ -76,7 +71,18 @@ void webserver::back_end( std::unordered_multimap<std::__cxx11::basic_string<cha
 
 	if (it == extension.end())
 		return;
-	std::string args {""};
+
+	std::string name;
+
+	#ifdef _WIN32 || _WIN64
+		name = "exe_win";
+	#elif __APPLE__ || __MACH__
+		name = "exe_mac";
+	#elif __linux__ || __unix || __unix__
+		name = "exe_linux";
+	#endif
+
+	QStringList arguments;
 
 	if (it->second["exe_argu"] == "auto")
 	{
@@ -87,32 +93,37 @@ void webserver::back_end( std::unordered_multimap<std::__cxx11::basic_string<cha
 
 		int position = std::stoi(it2->second);
 
-
-		/**for (int i = 0; i < file_json[pos]["number"]; i++)
-		{
-			std::string value = "args" + std::to_string(i);
-			args += " -" + value + " " + file_json[pos][value][position].get<std::string>();
-		}**/
-
 		int i { 0 };
 		std::string value = "args0"; 
 
 		while (file_json[pos].find(value) != file_json[pos].end())
 		{
-			args += " -" + value + " \"" + file_json[pos][value][position].get<std::string>() + "\"";
+			//args.push_back(value.c_str());
+			//args.push_back( file_json[pos][value][position].get<std::string>().c_str()); 
+			//IC( value.c_str(), file_json[pos][value][position].get<std::string>() );
+
+			arguments << QString::fromStdString( file_json[pos][value][position].get<std::string>() );
+
 			i++;
 			value = "args" + std::to_string(i);
 		}
 	}
 	else if (it->second["exe_argu"] == "manual")
 	{
-		args += " -file ../../client/menu" + std::to_string(pos) + ".json";
+		//args += " -file ../../client/menu" + std::to_string(pos) + ".json";
+
+		//args.push_back( "-file" );
+		//args.push_back( (" ../.../client/menu" + std::to_string(pos) + ".json").c_str() ) ;
+		
+		arguments << "-file" << QString::fromStdString( " ../.../client/menu" + std::to_string(pos) + ".json" );
 
 		for (auto &it : query_fields)
 		{
 			if (it.first != "x" && it.first != "y")
 			{
-				args += " -" + it.first + " \"" + it.second + "\"";
+				//args += " -" + it.first + " \"" + it.second + "\"";
+
+				arguments << QString::fromStdString( it.first ) << QString::fromStdString( it.second );
 			}
 
 		}
@@ -120,23 +131,31 @@ void webserver::back_end( std::unordered_multimap<std::__cxx11::basic_string<cha
 	}
 
 
-	std::string exe = "./extension/" + type + "/" + it->second["exe"].get<std::string>() + args;
+	std::string exe = "./extension/" + type + "/" + it->second[name].get<std::string>();
 	std::cout <<  exe  << std::endl;
 
 	
 	std::cout << "Program started" << std::endl;
-	auto retour = system(exe.c_str());
-	std::cout << "Return code: " << retour << std::endl;
+	
+	
+	QProcess start_prog;
+	start_prog.start( QString::fromStdString( exe ), arguments );
+
+	start_prog.waitForFinished();
+	std::cout << start_prog.readAllStandardOutput().toStdString() << std::endl;
+
+	return;
+	
 }
 
-int webserver::port()
+int website::port()
 {
 	// to get the port of the server
 	return config_json["port"]; 
 
 }
 
-int webserver::find_json(int x, int y)
+int website::find_json(int x, int y)
 {
 	/** return the position in json's vector with coodinate **/
 
@@ -150,7 +169,7 @@ int webserver::find_json(int x, int y)
 
 }
 
-int webserver::find_json_str(std::string x, std::string y)
+int website::find_json_str(std::string x, std::string y)
 {
 	/** return the position in json's vector with coodinate **/
 
@@ -165,7 +184,7 @@ int webserver::find_json_str(std::string x, std::string y)
 }
 
 
-std::string webserver::json_f(std::string x, std::string y)
+std::string website::json_f(std::string x, std::string y)
 {
 	/** open the html file **/
 
@@ -209,7 +228,7 @@ std::string webserver::json_f(std::string x, std::string y)
 
 }
 
-std::string webserver::arround_pos(int x, int y)
+std::string website::arround_pos(int x, int y)
 {
 	/** to get the arrows on the slide **/
 
@@ -243,7 +262,7 @@ std::string webserver::arround_pos(int x, int y)
 	return valeur;
 }
 
-std::string webserver::ext_style(std::string x, std::string y)
+std::string website::ext_style(std::string x, std::string y)
 {
 	/** to get the css code the extension **/
 
@@ -267,7 +286,7 @@ std::string webserver::ext_style(std::string x, std::string y)
 
 }
 
-std::string webserver::ext_script(std::string x, std::string y)
+std::string website::ext_script(std::string x, std::string y)
 {
 	/** to get the js code the extension **/
 
@@ -289,9 +308,14 @@ std::string webserver::ext_script(std::string x, std::string y)
 
 }
 
-std::string webserver::html_p(int x, int y)
+std::string website::html_p()
 {
 	/** open the default page **/
+
+	int x { config_json["pos"][0].get<int>() };
+	int y { config_json["pos"][1].get<int>() };
+
+	std::cout << "The positions are " << x << " " << y << std::endl;
 	
 	std::ifstream flux("file/index.html");
 
@@ -308,13 +332,20 @@ std::string webserver::html_p(int x, int y)
 		}
 		else if (line == "<!--Element -->")
 		{
-			int pos { find_json(0,0) };
+			int pos { find_json(x,y) };
 			std::string type { file_json[pos]["type"] };
+			IC(type, x, y, pos);
 
 			auto it = extension.find(type);
 
+			if (it == extension.end())
+				std::cout << "pb" << std::endl;
+
+
+			IC();
 			std::string file_n { "extension/"  + type + "/" +  it->second["html"].get<std::string>()}; 
-			std::string result { f_open.open_file( file_n, file_json[0] )};	
+			IC();
+			std::string result { f_open.open_file( file_n, file_json[pos] )};	
 			html += result;
 		}
 		else
@@ -326,9 +357,11 @@ std::string webserver::html_p(int x, int y)
 
 	flux.close();
 
+	IC();
 
 	return html;
 
 }
 
-webserver::~webserver() {}
+website::~website() {}
+
