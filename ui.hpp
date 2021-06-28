@@ -30,7 +30,7 @@
 #include <QCloseEvent> 
 #include "server.hpp"
 #include <QSpacerItem>
-#include <icecream.hpp>
+#include "dependency/icecream/icecream.hpp"
 
 #ifndef __has_include
   static_assert(false, "__has_include not supported");

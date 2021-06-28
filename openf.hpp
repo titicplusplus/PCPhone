@@ -4,7 +4,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include <inja/inja.hpp>
+#include "dependency/inja/inja.hpp"
 #include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
