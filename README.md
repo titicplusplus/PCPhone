@@ -10,11 +10,9 @@ PCPhone allows to control your pc with any devices ( with a browser )
 
 You need to install:
 
-xdotool
-Qt
-https://github.com/nlohmann/json	
-https://github.com/pantor/inja
-https://gitlab.com/eidheim/Simple-Web-Server
+- xdotool
+- Qt
+- https://github.com/nlohmann/json	( apt install nlohmann-json-dev )
 
 ```
 git clone https://github.com/titicplusplus/PCPhone.git
