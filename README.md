@@ -1,5 +1,7 @@
 PCPhone allows to control your pc with any devices ( with a browser )
 
+You can join the ![Discord Server](https://discord.com/invite/aMNZXdrXVh)
+
 # Screenshot
 ![](/screen/screen2.png)
 ![](/screen/screen3.png)
