@@ -14,7 +14,6 @@ You need to install:
 
 - xdotool
 - Qt 5
-- https://github.com/nlohmann/json	( apt install nlohmann-json-dev )
 
 ```
 git clone https://github.com/titicplusplus/PCPhone.git
