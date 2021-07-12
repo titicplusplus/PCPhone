@@ -3,7 +3,8 @@
 
 #include <memory>
 
-#ifdef ASIO_STANDALONE
+//#ifdef ASIO_STANDALONE
+
 #include <asio.hpp>
 #include <asio/steady_timer.hpp>
 namespace SimpleWeb {
@@ -13,7 +14,8 @@ namespace SimpleWeb {
   using system_error = std::system_error;
   namespace make_error_code = std;
 } // namespace SimpleWeb
-#else
+
+/**#else
 #include <boost/asio.hpp>
 #include <boost/asio/steady_timer.hpp>
 namespace SimpleWeb {
@@ -24,7 +26,7 @@ namespace SimpleWeb {
   using system_error = boost::system::system_error;
   namespace make_error_code = boost::system::errc;
 } // namespace SimpleWeb
-#endif
+#endif**/
 
 namespace SimpleWeb {
 #if(ASIO_STANDALONE && ASIO_VERSION >= 101300) || BOOST_ASIO_VERSION >= 101300
