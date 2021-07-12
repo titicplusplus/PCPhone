@@ -57,8 +57,8 @@ ui::ui()
 
 	up         = new QPushButton("Up ", this);
 	down       = new QPushButton("Down ", this);
-	left       = new QPushButton("Left ", this);
-	right      = new QPushButton("Right ", this);
+	left_b       = new QPushButton("Left ", this);
+	right_b      = new QPushButton("Right ", this);
 
 	deleteB    = new QPushButton("Delete", this);
 	open       = new QPushButton("Open ", this);
@@ -77,7 +77,6 @@ ui::ui()
 
 	Bx = -1;
 	By = -1;
-
 
 
 	sticon = new QSystemTrayIcon(this); // on construit notre icône de notification
@@ -554,6 +553,8 @@ void ui::config_grid(QString find_r)
 			tab2d[i].push_back(NULL);
 		}
 	}
+
+	IC( tab2d.size(), tab2d[0].size() );
 	
 
 	for (int i = 0; i < futur_json["number_menu"]; i++)
@@ -568,6 +569,7 @@ void ui::config_grid(QString find_r)
 		const QString ui { QString::fromStdString(text_n) };
 
 		tab2d[PosX][PosY] = new QPushButton(ui, this);
+		IC( PosX, PosY );
 	}
 
 
@@ -580,6 +582,7 @@ void ui::config_grid(QString find_r)
 			if (tab2d[j][i] == nullptr)
 			{
 				tab2d[j][i] = new QPushButton(this);
+				IC( j , i) ;
 				tab2d[j][i]->setIcon(icon);
 				tab2d[j][i]->setIconSize(QSize(150,150)); //);
 				tab2d[j][i]->setStyleSheet("background: none");
@@ -646,8 +649,8 @@ void ui::start()
 
 	connect(up, &QPushButton::clicked, this, [this]{ depla_b(0,1); });
 	connect(down, &QPushButton::clicked, this, [this]{ depla_b(0,-1); });
-	connect(left, &QPushButton::clicked, this, [this]{ depla_b(-1,0); });
-	connect(right, &QPushButton::clicked, this, [this]{ depla_b(1,0); });
+	connect(left_b, &QPushButton::clicked, this, [this]{ depla_b(-1,0); });
+	connect(right_b, &QPushButton::clicked, this, [this]{ depla_b(1,0); });
 
 	//connect(start_stop, &QPushButton::clicked, this, &ui::start_stop_funt);
 	//connect(restart, &QPushButton::clicked, this, &ui::restart_server);
@@ -662,8 +665,8 @@ void ui::start()
 	
 	option_b->addWidget(up);
 	option_b->addWidget(down);
-	option_b->addWidget(right);
-	option_b->addWidget(left);
+	option_b->addWidget(right_b);
+	option_b->addWidget(left_b);
 	option_b->addWidget(deleteB);
 	option_b->addWidget(open);
 
@@ -765,7 +768,6 @@ void ui::open_ui_ext()
 
 ui::~ui()
 {
-	std::cout << "server end" << std::endl;
+	server.stop_server();
 	server.quit();
-	std::cout << "by" << std::endl;
 }

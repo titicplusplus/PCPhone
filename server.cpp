@@ -57,7 +57,8 @@ server_pcphone::server_pcphone()
 
 	server.resource["^/exe$"]["GET"] = [this](std::shared_ptr<HttpServer::Response> response, std::shared_ptr<HttpServer::Request> request) {
 		std::cout << request->path << " " << request->method << std::endl;
-		auto query_fields = request->parse_query_string();
+
+		std::unordered_multimap<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char>, SimpleWeb::CaseInsensitiveHash, SimpleWeb::CaseInsensitiveEqual> query_fields = request->parse_query_string();
 
 		for (auto& field : query_fields)
 			std::cout << field.first << ": " << field.second<< std::endl;
@@ -124,6 +125,12 @@ server_pcphone::server_pcphone()
 void server_pcphone::run()
 {
 	server.start();
+}
+
+
+void server_pcphone::stop_server()
+{
+	server.stop();
 }
 
 server_pcphone::~server_pcphone()

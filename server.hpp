@@ -15,6 +15,7 @@ class server_pcphone : public QThread
 			server.config.port = web.port(); //The port
 		}
 		void run() override;
+		void stop_server();
 		~server_pcphone();
 
 	private:

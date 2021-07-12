@@ -195,47 +195,47 @@ class ui : public QWidget
 
 
 	private:
-		openf f_open; //to open the extension s file
+		//openf f_open; //to open the extension s file
 
 		QIcon icon;
 
-		QFormLayout *form_layout;
-		QGroupBox *settings;
-		QGroupBox *option_bb;
-		QVBoxLayout *main_layout;
-		QHBoxLayout *option_b;
+		QPointer<QFormLayout> form_layout;
+		QPointer<QGroupBox> settings;
+		QPointer<QGroupBox> option_bb;
+		QPointer<QVBoxLayout> main_layout;
+		QPointer<QHBoxLayout> option_b;
 
 
-		QGroupBox *ap_re_g;
-		QHBoxLayout *ap_re;
+		QPointer<QGroupBox> ap_re_g;
+		QPointer<QHBoxLayout> ap_re;
 
 		int Bx;
 		int By;
 
 
-		QPushButton* left;
-		QPushButton* right;
-		QPushButton* up;
-		QPushButton* down;
+		QPointer<QPushButton> left_b;
+		QPointer<QPushButton> right_b;
+		QPointer<QPushButton> up;
+		QPointer<QPushButton> down;
 
-		QPushButton *deleteB;
-		QPushButton *open;
+		QPointer<QPushButton> deleteB;
+		QPointer<QPushButton> open;
 
 		
 
-		QGridLayout *grid;
-		std::vector< std::vector< QPushButton* > > tab2d;
-		QGroupBox *all_button;
-		QSpinBox *port_l;
-		QPushButton *button_f;
-		QPushButton *apply;
-		QPushButton *reset;
-		QLabel *text_f;
+		QPointer<QGridLayout> grid;
+		std::vector< std::vector< QPointer<QPushButton> > > tab2d; //
+		QPointer<QGroupBox> all_button;
+		QPointer<QSpinBox> port_l;
+		QPointer<QPushButton> button_f;
+		QPointer<QPushButton> apply;
+		QPointer<QPushButton>reset;
+		QPointer<QLabel> text_f; 	//
 
 
-		QPushButton*t_link;
+		QPointer<QPushButton> t_link;
 
-		QComboBox *combo;
+		QPointer<QComboBox> combo;
 		
 		json futur_json;
 
@@ -247,7 +247,7 @@ class ui : public QWidget
 
 		std::array<int, 4> xy;
 		
-		QSystemTrayIcon *sticon;
+		QPointer<QSystemTrayIcon> sticon; //
 		bool stop_all;
 
 		server_pcphone server;

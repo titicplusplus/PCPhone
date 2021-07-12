@@ -15,7 +15,9 @@ website::website() {
 	int size { config_json["number_menu"] }; 
 	std::cout << size << std::endl;
 	
-	file_json.resize(size);
+	//file_json.resize(size);
+
+
 
 	for (int i = 0; i < size; i++)	
 	{
@@ -30,7 +32,18 @@ website::website() {
 
 		std::ifstream ifs_n("client/menu" + std::to_string( config_json[name][2].get<int>()+1 ) + ".json");
 		//file_json.push_back( json::parse(ifs_n) );
+		
+		//file_json[ config_json[name][2] ] = json::parse(ifs_n);
+
+		while ( config_json[name][2] >= file_json.size() )
+		{
+			file_json.push_back("{}");
+		}
+
+		IC( file_json.size(), config_json[name][2].get<int>() );
+
 		file_json[ config_json[name][2] ] = json::parse(ifs_n);
+
 		ifs_n.close();
 	}
 
@@ -64,10 +77,10 @@ void website::back_end( std::unordered_multimap<std::__cxx11::basic_string<char>
 
 	int pos = find_json_str( query_fields.find("x")->second,query_fields.find("y")->second);
 
+	std::string type2 { file_json[pos]["type"] };
 
-	std::string type { file_json[pos]["type"] };
-
-	auto it = extension.find(type);
+	auto it = extension.find( type2 );
+	//auto it2 = extension.find(type);
 
 	if (it == extension.end())
 		return;
@@ -96,17 +109,18 @@ void website::back_end( std::unordered_multimap<std::__cxx11::basic_string<char>
 		int i { 0 };
 		std::string value = "args0"; 
 
-		while (file_json[pos].find(value) != file_json[pos].end())
+		for (auto& el : file_json[pos].items())
 		{
-			//args.push_back(value.c_str());
-			//args.push_back( file_json[pos][value][position].get<std::string>().c_str()); 
-			//IC( value.c_str(), file_json[pos][value][position].get<std::string>() );
 
-			arguments << QString::fromStdString( file_json[pos][value][position].get<std::string>() );
-
-			i++;
-			value = "args" + std::to_string(i);
+			if (el.key() == value)
+			{
+				arguments << QString::fromStdString( file_json[pos][value][position].get<std::string>() );
+				i++;
+				value = "args" + std::to_string(i);
+			}
 		}
+
+
 	}
 	else if (it->second["exe_argu"] == "manual")
 	{
@@ -130,9 +144,10 @@ void website::back_end( std::unordered_multimap<std::__cxx11::basic_string<char>
 
 	}
 
-
-	std::string exe = "./extension/" + type + "/" + it->second[name].get<std::string>();
-	std::cout <<  exe  << std::endl;
+	std::string exe = "./extension/";
+	exe +=  type2;
+	exe += "/";
+	exe +=  it->second[name].get<std::string>();
 
 	
 	std::cout << "Program started" << std::endl;

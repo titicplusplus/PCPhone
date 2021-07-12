@@ -15,7 +15,6 @@
 #include <QProcess>
 #include <QDebug>
 
-
 #ifndef __has_include
   static_assert(false, "__has_include not supported");
 #else
@@ -23,16 +22,15 @@
 #    include <experimental/filesystem>
      namespace fs = std::experimental::filesystem;
 #  elif __has_include(<filesystem>)
-#    include <filesystem>
-     namespace fs = std::filesystem;
+    #include <filesystem>
+    namespace fs = std::filesystem;
 #  elif __has_include(<boost/filesystem.hpp>)
 #    include <boost/filesystem.hpp>
      namespace fs = boost::filesystem;
 #  endif
 #endif
 
-
-#include <simple-web-server/server_http.hpp>
+#include "dependency/web-server/server_http.hpp"
 using HttpServer = SimpleWeb::Server<SimpleWeb::HTTP>;
 
 

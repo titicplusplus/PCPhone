@@ -4,8 +4,9 @@
 
 TEMPLATE = app
 TARGET = ui
-INCLUDEPATH += .
-LIBS += -lstdc++fs -g
+
+INCLUDEPATH += . pcp_ext/ pcp_ext/asio/include/
+LIBS += -lstdc++fs -L"$$_PRO_FILE_PWD_/pcp_ext/asio/src"
 RESOURCES += ressources.qrc
 
 
@@ -16,7 +17,9 @@ RESOURCES += ressources.qrc
 # feature of Qt which has been marked as deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
 # deprecated API in order to know how to port your code away from it.
-DEFINES += QT_DEPRECATED_WARNINGS
+# DEFINES += QT_DEPRECATED_WARNINGS
+
+CONFIG += no_warn qt debug
 
 # You can also make your code fail to compile if you use deprecated APIs.
 # In order to do so, uncomment the following line.
